@@ -96,7 +96,7 @@ void access()
 	//delay(500);
 	byte a = 65;
 	byte d = 68;
-	int a = 0;
+	
 	byte outout = 0;
 
 	outout = Serial.read();
