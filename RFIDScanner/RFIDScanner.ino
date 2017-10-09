@@ -7,6 +7,7 @@
 
 #define SS_PIN 10
 #define RST_PIN 9
+#define RFCfgReg 0x26<<1
 
 LiquidCrystal_I2C lcd(0x27, 2, 1, 0, 4, 5, 6, 7, 3, POSITIVE);
 
@@ -28,15 +29,16 @@ void setup()
 {
 	Serial.begin(9600);   // Initiate a serial communication
 	SPI.begin();      // Initiate  SPI bus
-	mfrc522.PCD_Init();   // Initiate MFRC522
-
-	pinMode(led_green, OUTPUT);
-
+	mfrc522.RxGain_max;
+	mfrc522.PCD_AntennaOn();
+	mfrc522.PCD_Init();   // Initiate MFRC522	
+	pinMode(led_green, OUTPUT);	
 	display();
 }
 
 void loop()
 {
+
 	if (stopID == LOW)
 	{
 		if (millis() > time + 2000)
@@ -94,7 +96,7 @@ void access()
 	//delay(500);
 	byte a = 65;
 	byte d = 68;
-
+	int a = 0;
 	byte outout = 0;
 
 	outout = Serial.read();
